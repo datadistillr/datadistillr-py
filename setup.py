@@ -3,7 +3,7 @@ setup(
   name = 'datadistillr-py',         # How you named your package folder (MyLib)
   packages = ['datadistillr-py'],   # Chose the same as "name"
   version = '0.1',      # Start with a small number and increase it with every change you make
-  license='apache-2.0,        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
+  license='apache-2.0',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Be able to easily use Datadistillr from Python',   # Give a short description about your library
   author = 'Forrest Rogers',                   # Type in your name
   author_email = 'forrest@datadistillr.com',      # Type in your E-Mail
