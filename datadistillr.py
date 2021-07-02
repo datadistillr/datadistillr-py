@@ -15,27 +15,48 @@ class datadistillr:
         #self.login_page = "https://devapp.datadistillr.io/api/login"
         #self.logout_page = "https://devapp.datadistillr.io/api/logout"
         #self.projects_page = "https://devapp.datadistillr.io/api/projects"
+        self.session  = requests.Session()
+
         pass
 
 
     def login(self, email, password):
         """Takes in email and password, converts to dictionary, then converts to JSON, and posts the user info to the login page"""
         user_info = {
-            "email": str(email), 
-            "password": str(password),
+            "email": email, 
+            "password": password,
+            "invitations":{
+             "organizationInvitationToken":None,
+             "projectInvitationToken":None,
+             "teamInvitationToken":None}
             }
         
-        json_user_info = json.dumps(user_info)
-        
-        return requests.post(url = self.login_page, params = json_user_info, cookies = self.jar)
+        #json_user_info = json.dumps(user_info)
+
+        login_response = self.session.post(url = self.login_page, json = user_info, cookies = self.jar, verify= False)
+        login_resp_json = login_response.json()
+        #print(login_response.status_code)
+        return login_resp_json 
 
     def logout(self):
         """Gets logout page"""
-        return requests.get(url = self.logout_page, cookies = self.jar)
+        logout_response = self.session.get(url = self.logout_page, cookies = self.jar, verify = False)
+        logout_resp_json = logout_response.json()
+        #print(logout_response.status_code)
+        return logout_resp_json
 
     def get_projects(self):
         """Gets projects page"""
-        return requests.get(url = self.projects_page, cookies = self.jar)
+        projects_response = self.session.get(url = self.projects_page, cookies = self.jar, verify = False)
+        proj_resp_json = projects_response.json()
+        proj_list = proj_resp_json["projects"]
+        proj_token = proj_list[0]["token"]
+        #print(projects_response.status_code)
+        return proj_list
+
+
+
+
 
 
 
