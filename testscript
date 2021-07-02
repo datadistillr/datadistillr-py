@@ -1,8 +1,0 @@
-from datadistillr import datadistillr
-x = datadistillr()
-login = x.login(email, password)
-
-proj = x.get_projects()
-
-proj_token = x.session.get(x.token_url)
-proj_token_json = proj_token.json()
