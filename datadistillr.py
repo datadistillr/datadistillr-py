@@ -53,6 +53,23 @@ class datadistillr:
         proj_token = proj_list[0]["token"]
         #print(projects_response.status_code)
         return proj_list
+    
+    def create_project(self, name, desc = "", icon = "glass whiskey", color = "blend", active = 1, tags = []):
+        """Function to create a new project in Datadistillr from python"""
+        """Takes in name, with all other parameters set to default"""
+        new_proj_payload = {
+            "name" : name,
+            "desc" : desc,
+            "icon" : icon,
+            "color" : color,
+            "active" : active,
+            "tags" : tags
+        }
+        """Creates a dictionary from the parameters"""
+
+        new_proj = self.session.post(self.projects_page, json = new_proj_payload)
+        """Posts the payload to the projects page to create new project"""
+        return new_proj
 
 
 
