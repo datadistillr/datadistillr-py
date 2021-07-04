@@ -60,7 +60,7 @@ class datadistillr:
         """Creates a dictionary of all projects and their tokens"""
         for i in range(len(proj_list)):
             self.proj_token_dict[proj_list[i]["name"]] = [proj_list[i]["token"]]
-        """Returns the parsed JSON"""
+        """Returns the parsed JSON containing a list of the projects"""
         return proj_list
 
     def project_details(self, project_token):
