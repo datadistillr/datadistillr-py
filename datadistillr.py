@@ -14,9 +14,6 @@ class datadistillr:
     queryBarrels = base_url + "queryBarrels"
 
     def __init__(self):
-        #self.login_page = "https://devapp.datadistillr.io/api/login"
-        #self.logout_page = "https://devapp.datadistillr.io/api/logout"
-        #self.projects_page = "https://devapp.datadistillr.io/api/projects"
         self.session  = requests.Session()
         
         self.proj_token_dict = {}
