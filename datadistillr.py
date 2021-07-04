@@ -63,25 +63,6 @@ class datadistillr:
         """Returns the parsed JSON"""
         return proj_list
 
-    def create_project(self, name, desc = "", icon = "glass whiskey", color = "blend", active = 1, tags = []):
-        """Function to create a new project in Datadistillr from python"""
-        """Takes in name, with all other parameters set to default"""
-
-        """Creates a dictionary from the parameters"""
-        new_proj_payload = {
-            "name" : name,
-            "desc" : desc,
-            "icon" : icon,
-            "color" : color,
-            "active" : active,
-            "tags" : tags
-        }
-
-        """Posts the payload to the projects page to create new project"""
-        new_proj = self.session.post(self.projects_page, json = new_proj_payload)
-        """Returns the status code which should be 201"""
-        return new_proj
-
     def project_details(self, project_token):
         """Creates the details page through the project Distillry url + the project token"""  
         details_page = self.projectDistillry + "/" + str(project_token)
@@ -136,7 +117,24 @@ class datadistillr:
         return query_run_json
     
 
+    def create_project(self, name, desc = "", icon = "glass whiskey", color = "blend", active = 1, tags = []):
+        """Function to create a new project in Datadistillr from python"""
+        """Takes in name, with all other parameters set to default"""
 
+        """Creates a dictionary from the parameters"""
+        new_proj_payload = {
+            "name" : name,
+            "desc" : desc,
+            "icon" : icon,
+            "color" : color,
+            "active" : active,
+            "tags" : tags
+        }
+
+        """Posts the payload to the projects page to create new project"""
+        new_proj = self.session.post(self.projects_page, json = new_proj_payload)
+        """Returns the status code which should be 201"""
+        return new_proj
     
 
 
